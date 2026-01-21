@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Solicitudes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="gestion.css">
+</head>
+<body>
+    <!-- Header superior -->
+    <header class="top-header">
+        <div class="header-content">
+            <span class="company-name">Empresa ABC</span>
+            <div class="header-links">
+                <a href="#" class="header-link">Perfil</a>
+                <a href="#" class="header-link">Cerrar Sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner naranja -->
+    <div class="orange-banner">
+        <h1>GESTIÓN DE SOLICITUDES</h1>
+    </div>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Datos del Cliente -->
+        <section class="client-data">
+            <h2>Datos del Cliente</h2>
+            <div class="client-info-box">
+                <div class="info-row">
+                    <span class="info-label">Nombre:</span>
+                    <span class="info-value">Pedro Perez</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Dirección:</span>
+                    <span class="info-value">Av. Mariscal Francisco Solano</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Teléfono:</span>
+                    <span class="info-value">096123456</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">e-mail:</span>
+                    <span class="info-value">pedro.perez@gmail.com</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estado actual de solicitud -->
+        <div class="form-row">
+            <label class="form-label-inline">Estado actual de solicitud:</label>
+            <input type="text" value="Ingresada" readonly class="form-input-inline status-input">
+        </div>
+
+        <!-- Forma de Desembolso -->
+        <div class="form-row">
+            <label class="form-label-inline">Forma de Desembolso:</label>
+            <div class="radio-group-inline">
+                <label class="radio-label">
+                    <input type="radio" name="disbursement" value="caja" checked>
+                    <span>Caja</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="disbursement" value="cuenta">
+                    <span>Cuenta</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Monto total a pagar -->
+        <div class="form-row">
+            <label class="form-label-inline">Monto total a pagar:</label>
+            <input type="text" value="150.000,00" readonly class="form-input-inline">
+        </div>
+
+        <!-- Tabla de Gestión de Préstamo -->
+        <section class="table-section">
+            <h3 class="table-title">Gestion de Prestamo</h3>
+            <div class="table-container">
+                <table class="loan-table">
+                    <thead>
+                        <tr>
+                            <th>Nro. Cuota</th>
+                            <th>Monto</th>
+                            <th>Monto de Cuota</th>
+                            <th>Interes cuota</th>
+                            <th>Fecha de pago</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="installmentsTableBody">
+                        <!-- Las filas se generarán dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Botones de acción -->
+        <div class="action-buttons">
+            <button type="button" class="btn-authorize" onclick="handleAction('authorize')">Autorizar</button>
+            <button type="button" class="btn-request-info" onclick="handleAction('request-info')">Solicitar información</button>
+            <button type="button" class="btn-cancel" onclick="handleAction('cancel')">Cancelar</button>
+            <button type="button" class="btn-reject" onclick="handleAction('reject')">Rechazar</button>
+        </div>
+
+        <!-- Motivo y Confirmar -->
+        <div class="reason-section">
+            <label class="form-label" for="reason">Motivo:</label>
+            <textarea id="reason" name="reason" class="reason-textarea" rows="4" placeholder="Ingrese el motivo..."></textarea>
+            <div class="confirm-button-container">
+                <button type="button" class="btn-confirm" onclick="confirmAction()">Confirmar</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="gestion.js"></script>
+</body>
+</html>

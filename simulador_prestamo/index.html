@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Préstamos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header superior -->
+    <header class="top-header">
+        <div class="header-content">
+            <span class="company-name">Empresa ABC</span>
+            <div class="header-links">
+                <a href="#" class="header-link">Perfil</a>
+                <a href="#" class="header-link">Cerrar Sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner naranja -->
+    <div class="orange-banner">
+        <h1>SIMULADOR DE PRESTAMOS</h1>
+    </div>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Datos del Cliente -->
+        <section class="client-data">
+            <h2>Datos del Cliente</h2>
+            <div class="client-info">
+                <div class="info-row">
+                    <span class="info-label">Nombre:</span>
+                    <span class="info-value">Pedro Perez</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Dirección:</span>
+                    <span class="info-value">Av. Mariscal Francisco Solano</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Teléfono:</span>
+                    <span class="info-value">096123456</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">e-mail:</span>
+                    <span class="info-value">pedro.perez@gmail.com</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Préstamos vigentes (colapsada) -->
+        <section class="collapsible-section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon expand-icon">+</div>
+                <h3>Préstamos vigentes</h3>
+            </div>
+            <div class="section-content collapsed">
+                <!-- Contenido colapsado -->
+            </div>
+        </section>
+
+        <!-- Sección: Últimos préstamos finalizados (colapsada) -->
+        <section class="collapsible-section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon collapse-icon">-</div>
+                <h3>Ultimos préstamos finalizados</h3>
+            </div>
+            <div class="section-content collapsed">
+                <p class="no-data">No hay datos...</p>
+            </div>
+        </section>
+
+        <!-- Sección: Simular nuevo préstamo (expandida) -->
+        <section class="collapsible-section expanded">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon collapse-icon">-</div>
+                <h3>Simular nuevo préstamo</h3>
+            </div>
+            <div class="section-content">
+                <form class="loan-form" id="loanForm">
+                    <!-- Tipo de préstamo -->
+                    <div class="form-group">
+                        <label class="form-label">Tipo de préstamo</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="loanType" value="personal" checked>
+                                <span>Personal</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="loanType" value="empresa">
+                                <span>Empresa</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Monto a calcular -->
+                    <div class="form-group">
+                        <label class="form-label" for="amount">Monto a calcular</label>
+                        <input type="text" id="amount" name="amount" value="120.000,00" class="form-input">
+                    </div>
+
+                    <!-- Interés del préstamo -->
+                    <div class="form-group">
+                        <label class="form-label" for="interest">Interese del préstamo (%Anual)</label>
+                        <input type="text" id="interest" name="interest" value="8,50" class="form-input">
+                    </div>
+
+                    <!-- Tiempo de amortización -->
+                    <div class="form-group">
+                        <label class="form-label" for="term">Tiempo de amortizacion</label>
+                        <select id="term" name="term" class="form-select">
+                            <option value="12">12 cuotas</option>
+                            <option value="18" selected>18 cuotas</option>
+                            <option value="24">24 cuotas</option>
+                            <option value="36">36 cuotas</option>
+                        </select>
+                    </div>
+
+                    <!-- Botón Simular -->
+                    <button type="button" class="btn-simulate" onclick="simulateLoan()">Simular</button>
+
+                    <!-- Monto máximo disponible -->
+                    <p class="max-amount">Monto máximo disponible $: 150.000,00</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Resumen de la financiación -->
+        <section class="summary-section">
+            <h3>Resumen de la financiación</h3>
+            <div class="summary-box">
+                <div class="summary-field">
+                    <label>Cuota mensual</label>
+                    <input type="text" value="100,00 $" readonly class="summary-input">
+                </div>
+                <div class="summary-field">
+                    <label>Numero de pagos</label>
+                    <input type="text" value="18" readonly class="summary-input">
+                </div>
+                <div class="summary-field">
+                    <label>Interes a pagar</label>
+                    <input type="text" value="103,00 $" readonly class="summary-input">
+                </div>
+                <div class="summary-field">
+                    <label>Monto inicial</label>
+                    <input type="text" value="120.000,00" readonly class="summary-input">
+                </div>
+                <div class="summary-buttons">
+                    <button type="button" class="btn-close">Cerrar</button>
+                    <button type="button" class="btn-create">Crear Solicitud</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
